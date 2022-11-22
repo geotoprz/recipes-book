@@ -48,8 +48,7 @@ export const loadSearchResults = async function (query) {
         image: rec.image_url,
       };
     });
-
-    console.log(state.search);
+    state.search.page = 1;
   } catch (err) {
     throw err;
   }
@@ -58,7 +57,8 @@ export const loadSearchResults = async function (query) {
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
 
-  const start = (page - 1) * state.search.resultsPerPage;
-  const end = state.search.resultsPerPage;
+  const start = (page - 1) * state.search.resultsPerPage; // 0
+  const end = page * state.search.resultsPerPage; // 9
+
   return state.search.results.slice(start, end);
 };
