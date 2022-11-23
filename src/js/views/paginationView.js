@@ -1,5 +1,5 @@
-import icons from '../../img/icons.svg';
-import View from './View';
+import View from './View.js';
+import icons from 'url:../../img/icons.svg'; // Parcel 2
 
 class PaginationView extends View {
   _parentElement = document.querySelector('.pagination');
@@ -10,7 +10,6 @@ class PaginationView extends View {
       if (!btn) return;
 
       const goToPage = +btn.dataset.goto;
-
       handler(goToPage);
     });
   }
